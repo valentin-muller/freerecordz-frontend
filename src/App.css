@@ -24,3 +24,9 @@ button.navbar-button {
   color: white;
   text-decoration: none;
 }
+
+input[type=text] {
+  border: 2px solid red;
+  border-radius: 4px;
+  width: 100%;
+}

@@ -8,7 +8,8 @@ function PrivateRoute({ component: Component, isLoggedIn, ...rest }) {
   return (
     <Route
       {...rest}
-      render={function(props) {
+      render={function(props) { 
+        console.log("PrivateRoute",isLoggedIn);
         if (isLoggedIn) return <Component {...props} />;
         else if (!isLoggedIn) return <Redirect to="/login" />;
       }}

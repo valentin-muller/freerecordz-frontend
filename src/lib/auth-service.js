@@ -8,9 +8,9 @@ class Auth {
     });
   }
 
-  signup({ username, password }) {
+  signup({ email, firstName, lastName, username, password }) {
     return this.auth
-      .post("/auth/signup", { username, password })
+      .post("/auth/signup", { email, firstName, lastName, username, password })
       .then(({ data }) => data);
     // .then((response) => response.data);
   }

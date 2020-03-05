@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./pages/Private";
+import Upload from "./pages/Upload";
 
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
@@ -24,6 +25,8 @@ class App extends Component {
           <AnonRoute exact path="/login" component={Login} />
 
           <PrivateRoute exact path="/private" component={Private} />
+          <PrivateRoute exact path="/upload" component={Upload} />
+
         </Switch>
       </div>
     );
