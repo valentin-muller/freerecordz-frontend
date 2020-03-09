@@ -22,7 +22,6 @@ class Login extends Component {
     return (
       <div>
         <h1>Login</h1>
-
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
           <input
@@ -42,9 +41,11 @@ class Login extends Component {
 
           <input type="submit" value="Login" />
         </form>
+        ;
       </div>
     );
   }
 }
 
 export default withAuth(Login);
+

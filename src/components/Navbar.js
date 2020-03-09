@@ -5,6 +5,7 @@ import { withAuth } from "./../lib/Auth";
 class Navbar extends Component {
   render() {
     const { user, logout, isLoggedIn } = this.props;
+    console.log('this.props :', this.props);
 
     return (
       <nav className="navbar">
@@ -15,6 +16,11 @@ class Navbar extends Component {
           <>
             <p>username: {user.username}</p>
             <button onClick={ () => {logout()}} >Logout</button>
+            <Link to="/search">
+              {" "}
+              <button className="navbar-button">Search</button>{" "}
+            </Link>
+
           </>
         ) : (
           <>

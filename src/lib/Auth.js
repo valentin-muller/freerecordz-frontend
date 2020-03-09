@@ -61,9 +61,9 @@ class AuthProvider extends React.Component {
       );
   }
 
-  signup = (username, password) => {
+  signup = (username, password, email, firstName, lastName) => {
     authService
-      .signup({ username, password })
+      .signup({ username, password, email, firstName, lastName })
       .then(user => this.setState({ isLoggedIn: true, user }))
       .catch(err => console.log(err));
   };
@@ -71,8 +71,11 @@ class AuthProvider extends React.Component {
   login = (username, password) => {
     authService
       .login({ username, password })
-      .then(user => this.setState({ isLoggedIn: true, user }, () => console.log("this.state.isLoggedin", this.state.isLoggedIn)
-      ))
+      .then(user =>
+        this.setState({ isLoggedIn: true, user }, () =>
+          console.log("this.state.isLoggedin", this.state.isLoggedIn)
+        )
+      )
       .catch(err => console.log(err));
   };
 
@@ -80,7 +83,8 @@ class AuthProvider extends React.Component {
     authService
       .logout()
       .then(() =>
-        this.setState({ isLoggedIn: false, user: null }, () => console.log("Log out", this.state.isLoggedIn)
+        this.setState({ isLoggedIn: false, user: null }, () =>
+          console.log("Log out", this.state.isLoggedIn)
         )
       )
       .catch(err => console.log(err));
@@ -90,11 +94,11 @@ class AuthProvider extends React.Component {
     const { isLoading, isLoggedIn, user } = this.state;
     const { login, logout, signup } = this;
 
-    return (
-      <Provider value={{ isLoading, isLoggedIn, user, login, logout, signup }}>
-        {this.props.children}
-      </Provider>
-    );
+ return (
+   <Provider value={{ isLoading, isLoggedIn, user, login, logout, signup }}>
+     {isLoading ? "Loading" : this.props.children}
+   </Provider>
+ );
     /*
       <Provider> `value={}` data will be available to all <Consumer> components 
     */

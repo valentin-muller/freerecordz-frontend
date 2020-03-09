@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import trackService from "../lib/track-service";
 
 
 class Upload extends Component {
@@ -8,9 +8,9 @@ class Upload extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // const { url, title, desc, bpm, genre, countryOfOrigin, language, insturmentsIncl, releaseYear, mood, budget, recordingEnviroment, user  } = this.state;
-
-    // this.props.upload(url, title, desc, bpm, genre, countryOfOrigin, language, insturmentsIncl, releaseYear, mood, budget, recordingEnviroment, user);
+    const { url, title, desc, bpm, countryOfOrigin, language, releaseYear, budget, recordingEnviroment, genre, instrumentsIncl, mood  } = this.state;
+    console.log('url :', url);
+    trackService.upload(url, title, desc, bpm, countryOfOrigin, language, releaseYear, budget, recordingEnviroment, genre, instrumentsIncl, mood);
   };
 
   handleChange = event => {
@@ -18,13 +18,38 @@ class Upload extends Component {
     this.setState({[name]: value});
   };
 
+
+
+  fileOnchange = event => {    
+    const file = event.target.files[0];
+    console.log('file :', file);
+    const uploadData = new FormData();
+    uploadData.append('url', file)
+    console.log('uploadData :', uploadData);
+  //  this.setState({ url: uploadData });
+    trackService.getUrl(uploadData)
+      .then((videoUrl) => console.log(videoUrl)
+      )
+  }
+
+
+
+
+
     render() {
       const { title, desc, bpm, genre, countryOfOrigin, language, insturmentsIncl, releaseYear, mood, budget, recordingEnviroment} = this.state;
+
         return (
           <div>
             <h1>Upload Track</h1>
 
-            <form onSubmit={this.handleFormSubmit}>
+            <form
+              onSubmit={this.handleFormSubmit}
+              encType="multipart/form-data"
+            >
+              <label>File</label>
+              <input type="file" name="url" onChange={this.fileOnchange} />
+
               <label>Title</label>
               <input
                 type="text"
@@ -108,7 +133,7 @@ class Upload extends Component {
               <label>Mood</label>
               <input
                 type="text"
-                name="mood "
+                name="mood"
                 value={mood}
                 onChange={this.handleChange}
               />
@@ -134,7 +159,7 @@ class Upload extends Component {
               />
 
               <br />
-              
+
               <input type="submit" value="Upload" />
             </form>
           </div>
@@ -142,4 +167,4 @@ class Upload extends Component {
     }
 }
 
-export default Upload;
+export default Upload; 
