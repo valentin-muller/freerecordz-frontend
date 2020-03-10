@@ -2,37 +2,58 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "./../lib/Auth";
 
-class Navbar extends Component {
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
+import ButtonToolbar from "react-bootstrap/Buttontoolbar"
+
+class TopNavbar extends Component {
   render() {
     const { user, logout, isLoggedIn } = this.props;
     console.log('this.props :', this.props);
 
     return (
       <nav className="navbar">
-        <Link to={"/"} id="home-btn">
-          <h4>Home</h4>
-        </Link>
         {isLoggedIn ? (
           <>
-            <p>username: {user.username}</p>
-            <button onClick={ () => {logout()}} >Logout</button>
-            <Link to="/search">
-              {" "}
-              <button className="navbar-button">Search</button>{" "}
-            </Link>
+            <ButtonToolbar>
+              <Button
+                variant="outline-primary"
+                onClick={() => {
+                  logout();
+                }}
+              >
+                Logout
+              </Button>
+            </ButtonToolbar>
 
+            <ButtonToolbar>
+              <Link to="/search">
+                {" "}
+                <Button variant="outline-primary" className="navbar-button">
+                  Search
+                </Button>{" "}
+              </Link>
+            </ButtonToolbar>
           </>
         ) : (
           <>
-            <Link to="/login">
-              {" "}
-              <button className="navbar-button">Login</button>{" "}
-            </Link>
+            <ButtonToolbar>
+              <Link to="/login">
+                {" "}
+                <Button variant="outline-primary" className="navbar-button">
+                  Login
+                </Button>{" "}
+              </Link>
+            </ButtonToolbar>
             <br />
-            <Link to="/signup">
-              {" "}
-              <button className="navbar-button">Sign Up</button>{" "}
-            </Link>
+            <ButtonToolbar>
+              <Link to="/signup">
+                {" "}
+                <Button variant="outline-primary" className="navbar-button">
+                  Sign Up
+                </Button>{" "}
+              </Link>
+            </ButtonToolbar>
           </>
         )}
       </nav>
@@ -40,4 +61,10 @@ class Navbar extends Component {
   }
 }
 
-export default withAuth(Navbar);
+export default withAuth(TopNavbar);
+
+            // <button onClick={ () => {logout()}} >Logout</button>
+            // <Link to="/search">
+            //   {" "}
+            //   <button className="navbar-button">Search</button>{" "}
+            // </Link>

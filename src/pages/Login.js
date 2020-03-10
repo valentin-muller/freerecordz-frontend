@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { withAuth } from "./../lib/Auth";
 
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 class Login extends Component {
   state = { username: "", password: "" };
 
@@ -22,26 +25,32 @@ class Login extends Component {
     return (
       <div>
         <h1>Login</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
+        <Form onSubmit={this.handleFormSubmit}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter your username"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
 
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-
-          <input type="submit" value="Login" />
-        </form>
-        ;
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter your password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
       </div>
     );
   }
@@ -49,3 +58,25 @@ class Login extends Component {
 
 export default withAuth(Login);
 
+
+
+
+        // <form onSubmit={this.handleFormSubmit}>
+        //   <label>Username:</label>
+        //   <input
+        //     type="text"
+        //     name="username"
+        //     value={username}
+        //     onChange={this.handleChange}
+        //   />
+
+        //   <label>Password:</label>
+        //   <input
+        //     type="password"
+        //     name="password"
+        //     value={password}
+        //     onChange={this.handleChange}
+        //   />
+
+        //   <input type="submit" value="Login" />
+        // </form>;
