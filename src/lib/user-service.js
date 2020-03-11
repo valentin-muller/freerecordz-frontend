@@ -16,9 +16,9 @@ class User {
   }
 
 
-  findById({ title, desc, bpm, genre, countryOfOrigin, language, insturmentsIncl, releaseYear, mood, budget, recordingEnviroment }) {
+  findById(id) {
     return this.user
-      .post("/:id", { title, desc, bpm, genre, countryOfOrigin, language, insturmentsIncl, releaseYear, mood, budget, recordingEnviroment })
+      .get(`/user/${id}`)
       .then(({ data }) => data);
     // .then((response) => response.data);
   }

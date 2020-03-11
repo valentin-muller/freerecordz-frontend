@@ -14,7 +14,8 @@ import Login from "./pages/Login";
 import Private from "./pages/Private";
 import Upload from "./pages/Upload";
 import Search from "./pages/Search";
-import Feed from "./pages/Feed"
+import Feed from "./pages/Feed";
+import UserId from "./pages/UserId";
 
 
 import AnonRoute from "./components/AnonRoute";
@@ -36,6 +37,9 @@ class App extends Component {
           <PrivateRoute exact path="/upload" component={Upload} />
           <PrivateRoute exact path="/search" component={Search} />
           <PrivateRoute exact path="/feed" component={Feed} />
+
+          <PrivateRoute exact path="/user/:id" component={UserId} />
+
         </Switch>
 
         <BottomBar />
