@@ -10,7 +10,7 @@ class BottomBar extends Component {
   render() {
     const { user, logout, isLoggedIn } = this.props;
     return (
-      <nav className="navbar">
+      <nav className="navbar footer">
         {isLoggedIn ? (
           <>
             <ButtonGroup aria-label="Basic example">
