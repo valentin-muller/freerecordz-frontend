@@ -27,14 +27,14 @@ class Track {
   //     // return this.auth.post("/auth/logout", {}).then((response) => response.data);
   //   }
 
-  //   upload( url, title, desc, bpm, countryOfOrigin, language, releaseYear, budget, recordingEnviroment, genre, instrumentsIncl, mood ) {
-  //     return this.track
-  //       .post("/upload", { url, title, desc, bpm, countryOfOrigin, language, releaseYear, budget, recordingEnviroment, genre, instrumentsIncl, mood })
-  //       .then(({ data }) => {
-  //           console.log('data :', data)
-  //           return data
-  //       });
-  // }
+    upload( url, title, desc, bpm, countryOfOrigin, language, releaseYear, budget, recordingEnviroment, genre, instrumentsIncl, mood ) {
+      return this.track
+        .post("/upload", { url, title, desc, bpm, countryOfOrigin, language, releaseYear, budget, recordingEnviroment, genre, instrumentsIncl, mood })
+        .then(({ data }) => {
+            console.log('data :', data)
+            return data
+        });
+  }
 
   //   getUrl( file ) {
   //     return this.track

@@ -37,8 +37,10 @@ class BottomBar extends Component {
           </>
         ) : (
           <>
-            <h3>Welcome to Freerecordz! Sign up or Login to continue!</h3>
-            <Spinner animation="grow" />
+            <h3 id="h3bottomnav">
+              Welcome to Freerecordz! Sign up or Login to continue!
+            </h3>
+            <Spinner animation="grow" id="h3bottomnav" />
           </>
         )}
       </nav>

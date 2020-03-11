@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useReducer } from "react";
 import { render } from "@testing-library/react";
 // import { Link } from "react-router-dom";
 import trackService from "../lib/track-service";
@@ -20,15 +20,21 @@ class Feed extends Component {
   //  const { title, desc, bpm, countryOfOrigin, language, releaseYear, budget, recordingEnviroment, genre, instrumentsIncl, mood } = this.state.allTracks;
   return (
     <div>
-
       <h1>This is a PrivateRoute Page for the Feed</h1>
       <h2>This will be the newsfeed</h2>
-      {this.state.allTracks.map(track => 
-        <h1>{track.url}</h1>
-        
-      )}
-    
-      
+      <br />
+      {this.state.allTracks.map(track => (
+        <h1>
+        {track.title}
+        <h3>
+          by {track.user}
+        </h3>
+        <br />
+          <audio controls>
+            <source src={track.url} />
+          </audio>
+        </h1>
+      ))}
     </div>
   );
  

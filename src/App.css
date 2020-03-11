@@ -12,7 +12,6 @@ nav.navbar {
   padding: 0px 20px;
   background: rgb(21, 42, 85);
 }
-
 button.navbar-button {
   padding: 5px 20px;
   width: 100px;
@@ -35,4 +34,9 @@ input[type=text] {
 -------------------------------------------------- */
 
 /* Login */
+
+/* BottomBar */
+#h3bottomnav {
+  color: white;
+}
 
