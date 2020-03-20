@@ -48,6 +48,11 @@ input[type=text] {
 /* BottomBar */
 #h3bottomnav {
   color: white;
+  width: 100%
+}
+.footer{
+  position: fixed;
+  bottom:10px;
 }
 
 
@@ -169,7 +174,3 @@ body .newsfeed_articlecontainer {
 	 right: 58px;
 }
 
-.footer{
-  position: fixed;
-  bottom:30px;
-}
