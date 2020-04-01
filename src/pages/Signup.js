@@ -6,13 +6,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 class Signup extends Component {
-  state = { username: "", password: "", email: "", firstName: "", lastName: "" };
+  state = { username: "", password: "", email: "", firstName: "", lastName: "", bio: ""};
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password, email, firstName, lastName } = this.state;
-
-    this.props.signup(username, password, email, firstName, lastName);
+    const { username, password, email, firstName, lastName, bio } = this.state;
+    console.log("bio", bio);
+    this.props.signup(username, password, email, firstName, lastName, bio);
   };
 
   handleChange = event => {
@@ -21,7 +21,7 @@ class Signup extends Component {
   };
 
   render() {
-    const { username, password, email, firstName, lastName } = this.state;
+    const { username, password, email, firstName, lastName, bio } = this.state;
     return (
       <div>
         <h1>Sign Up</h1>
@@ -77,6 +77,17 @@ class Signup extends Component {
               placeholder="Enter your password"
               name="password"
               value={password}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicBio">
+            <Form.Label>Bio</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Bio includes your contact information"
+              name="bio"
+              value={bio}
               onChange={this.handleChange}
             />
           </Form.Group>
